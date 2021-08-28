@@ -177,3 +177,27 @@ usermod -d 目录 用户名  ：修改某个用户的目录
 4. 在切换用户时，如果想在切换用户之后使用新用户的工作环境，可以在su和username之间加-，例如[su - root]
 5. $表示普通用户
 6. #表示超级用户，也就是root用户
+
+
+用户的密码设置问题  
+我们一般通过root创建用户的时候，配置密码  
+passwd 用户名         --- root用户可以设置简单的密码  
+```bash
+[root@EngulfMissing ~]# passwd kindred
+Changing password for user kindred.
+New password: 
+BAD PASSWORD: The password contains the user name in some form
+Retype new password: 
+Sorry, passwords do not match.
+New password: 
+BAD PASSWORD: The password contains the user name in some form
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+```
+
+普通用户   
+passwd                --- 普通用户设置密码太简单会不通过   
+
+锁定用户  
+passwd -l 用户名       --- 锁定后用户不能登录了  
+passwd -u 用户名       --- 解锁用户
