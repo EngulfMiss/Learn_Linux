@@ -50,3 +50,19 @@ mv ：移动文件或文件夹/重命名文件夹
 每个文件的属性由左边第一部分的10个字符来确定，如上图  
 
 ![image](https://user-images.githubusercontent.com/61497283/131208069-2171d0e8-ecbe-4c89-a468-a3d34b8aa65f.png)
+
+### 修改属性
+1. chgrp：更改文件属组  
+chgrp [-R] 属组名 文件名
+2. chown：更改文件属主，也可以同时更改文件属组
+chown [-R] 属主名 文件名
+chown [-R] 属主名: 属组名 文件名
+**3. chmod：更改文件9个属性(必须掌握)**  
+当你没权限操作文件时就可能需要修改权限了  
+chmod [-R] xyz 文件或目录  
+例如：chmod 777 filename
+Linux文件属性有两种设置方法，一种是数字()，一种是符号  
+Linux文件的基本权限有9个，分别是owner/group/others三种身份和各自的read/write/execute权限
+```
+r:4  w:2  x:1
+```
