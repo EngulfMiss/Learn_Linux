@@ -150,6 +150,7 @@ vi/vim共分为三种模式，分别是命令模式(Command mode),输入模式(I
 - 直接wq:保存并退出
 
 ### 账号管理
+实际是对 /etc/passwd文件的更新  
 添加用户  
 useradd -选项 用户名  
 例如  
@@ -201,3 +202,43 @@ passwd                --- 普通用户设置密码太简单会不通过
 锁定用户  
 passwd -l 用户名       --- 锁定后用户不能登录了  
 passwd -u 用户名       --- 解锁用户
+
+
+### 用户组管理
+实际是对 /etc/group文件的更新  
+创建一个用户组  groupadd  
+删除一个用户组  groupdel  
+修改用户组信息  groupmod  
+```bash
+[root@EngulfMissing ~]# groupadd -g 520 gnardada      # 添加用户组   -g 指定编号，如果不指定，就是自增1
+[root@EngulfMissing ~]# groupdel gnardada             # 删除用户组   
+[root@EngulfMissing ~]# groupmod -g 1216 -n gnar gnardada   # 修改用户组    -g 编号  -n 名字  最后是修改哪个用户组
+```
+
+**文件查看**
+/etc/passwd  
+用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录shell
+```bash
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+chrony:x:998:996::/var/lib/chrony:/sbin/nologin
+nscd:x:28:28:NSCD Daemon:/:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+kindred:x:1000:1000::/home/kindred:/bin/bash
+```
