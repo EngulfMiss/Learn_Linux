@@ -314,3 +314,25 @@ ps -aux|grep java
 
 结束进程：  
 kill -9 进程的id  
+
+
+## 安装JDK,rpm为例
+```bash
+[root@EngulfMissing jdk]# rpm -ivh jdk-8u221-linux-x64.rpm       # 安装
+
+# 卸载JDK
+[root@EngulfMissing jdk]# rpm -qa|grep jdk    # 检测JDK版本信息
+jdk1.8-1.8.0_221-fcs.x86_64
+[root@EngulfMissing jdk]# rpm -e --nodeps jdk1.8-1.8.0_221-fcs.x86_64   # 卸载JDK
+```
+
+**配置环境变量**  
+```bash
+[root@EngulfMissing jdk]# vim /etc/profile
+
+# 进入后在下面添加
+JAVA_HOME=/usr/java/jdk1.8.0_221-amd64
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+PATH=$PATH:$JAVA_HOME/bin
+export PATH CLASSPATH JAVA_HOME
+```
