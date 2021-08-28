@@ -148,3 +148,32 @@ vi/vim共分为三种模式，分别是命令模式(Command mode),输入模式(I
 - q:退出程序
 - w:保存文件
 - 直接wq:保存并退出
+
+### 账号管理
+添加用户  
+useradd -选项 用户名  
+例如  
+```
+[root@iZ2zedwea74ejj95zb9sh0Z home]# useradd -m kindred  # 创建一个用户
+[root@iZ2zedwea74ejj95zb9sh0Z home]# ls
+kindred  kindred.txt  mildlamb  myimage  tomcat
+```
+
+删除用户  
+userdel -r 用户名
+```
+[root@iZ2zedwea74ejj95zb9sh0Z home]# userdel -r kindred
+[root@iZ2zedwea74ejj95zb9sh0Z home]# ls
+kindred.txt  mildlamb  myimage  tomcat
+```
+
+修改用户  
+usermod -d 目录 用户名  ：修改某个用户的目录  
+
+切换用户  
+1. 切换用户的命令为:su username [username为你的用户名]
+2. 从普通用户切换到root用户，可以使用命令 :sudo su
+3. 在终端输入exit或logout或使用快捷方式ctrl+d，可以退回到原来用户
+4. 在切换用户时，如果想在切换用户之后使用新用户的工作环境，可以在su和username之间加-，例如[su - root]
+5. $表示普通用户
+6. #表示超级用户，也就是root用户
