@@ -317,6 +317,7 @@ kill -9 进程的id
 
 
 ## 安装JDK,rpm为例
+rpm -ivh xxx  
 ```bash
 [root@EngulfMissing jdk]# rpm -ivh jdk-8u221-linux-x64.rpm       # 安装
 
@@ -336,3 +337,8 @@ CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 PATH=$PATH:$JAVA_HOME/bin
 export PATH CLASSPATH JAVA_HOME
 ```
+
+## Tomcat安装,tar.gz为例
+tar -zxvf xxx  
+
+./xxx.sh 运行测试tomcat
