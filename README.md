@@ -242,3 +242,55 @@ nscd:x:28:28:NSCD Daemon:/:/sbin/nologin
 tcpdump:x:72:72::/:/sbin/nologin
 kindred:x:1000:1000::/home/kindred:/bin/bash
 ```
+
+
+### 磁盘管理
+- df：列出文件系统整体使用量  加-h 可以以M的形式展示  不加是字节大小显示 
+- du：检查磁盘空间使用量    du -sm /* : 检查根目录下每个目录所占用的容量
+
+```bash
+[root@EngulfMissing /]# df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+devtmpfs          930576       0    930576   0% /dev
+tmpfs             940920       0    940920   0% /dev/shm
+tmpfs             940920     456    940464   1% /run
+tmpfs             940920       0    940920   0% /sys/fs/cgroup
+/dev/vda1       41152812 2173476  37075628   6% /
+tmpfs             188188       0    188188   0% /run/user/0
+[root@EngulfMissing /]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        909M     0  909M   0% /dev
+tmpfs           919M     0  919M   0% /dev/shm
+tmpfs           919M  456K  919M   1% /run
+tmpfs           919M     0  919M   0% /sys/fs/cgroup
+/dev/vda1        40G  2.1G   36G   6% /
+tmpfs           184M     0  184M   0% /run/user/0
+
+
+
+[root@EngulfMissing home]# du -sm /*
+0	/bin
+147	/boot
+0	/dev
+34	/etc
+30	/home
+0	/lib
+0	/lib64
+1	/lost+found
+1	/media
+1	/mnt
+1	/opt
+du: cannot access ‘/proc/11983/task/11983/fd/4’: No such file or directory
+du: cannot access ‘/proc/11983/task/11983/fdinfo/4’: No such file or directory
+du: cannot access ‘/proc/11983/fd/4’: No such file or directory
+du: cannot access ‘/proc/11983/fdinfo/4’: No such file or directory
+0	/proc
+1	/root
+1	/run
+0	/sbin
+1	/srv
+0	/sys
+89	/tmp
+1649	/usr
+128	/var
+```
