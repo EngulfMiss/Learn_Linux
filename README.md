@@ -294,3 +294,23 @@ du: cannot access ‘/proc/11983/fdinfo/4’: No such file or directory
 1649	/usr
 128	/var
 ```
+
+### 进程管理
+- ps:查看当前系统中正在执行的各种进程的信息
+  - -a：显示当前终端运行的所有进程信息
+  - -u：以用户的信息显示进程
+  - -x：显示后台运行进程的参数
+
+```bash
+# ps -aux    -- 查看所有的进程
+# grep   -- 查找文件中符合条件的字符串
+ps -aux|grep java
+```
+- ps -ef：可以查看到父进程的信息(看父进程我们一般可以通过目录树来查看)
+- pstree
+  - -p：显示父id
+  - -u：显示用户组
+
+
+结束进程：  
+kill -9 进程的id  
