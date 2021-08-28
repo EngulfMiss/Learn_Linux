@@ -34,7 +34,9 @@ mv ：移动文件或文件夹/重命名文件夹
 -u 只替换更新过的文件  
 
 ### 文件属性
-![image](https://user-images.githubusercontent.com/61497283/131207803-0f1cd742-3603-4756-8db0-be78c349b29b.png)
+
+![image](https://user-images.githubusercontent.com/61497283/131207803-0f1cd742-3603-4756-8db0-be78c349b29b.png)  
+
 在Linux中开头第一个字符代表这个文件是目录，文件或者链接文件等：  
 - [d]：表示目录
 - [-]：表示文件
@@ -46,4 +48,5 @@ mv ：移动文件或文件夹/重命名文件夹
 其中，[r]表示可读(read),[w]表示可写(write),[x]表示可执行(execute)  
 这三个权限的位置不会改变，如果没有权限，就会出现减号[-]而已  
 每个文件的属性由左边第一部分的10个字符来确定，如上图  
-![Uploading image.png…]()
+
+![image](https://user-images.githubusercontent.com/61497283/131208069-2171d0e8-ecbe-4c89-a468-a3d34b8aa65f.png)
