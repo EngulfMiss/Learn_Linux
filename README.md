@@ -60,9 +60,18 @@ chown [-R] 属主名: 属组名 文件名
 **3. chmod：更改文件9个属性(必须掌握)**  
 当你没权限操作文件时就可能需要修改权限了  
 chmod [-R] xyz 文件或目录  
-例如：chmod 777 filename  , 7 = 4(r) + 2(w) + 1(x)
+例如：chmod 777 filename  , 7 = 4(r) + 2(w) + 1(x)  
 Linux文件属性有两种设置方法，一种是数字()，一种是符号  
 Linux文件的基本权限有9个，分别是owner/group/others三种身份和各自的read/write/execute权限  
 ```
 r:4  w:2  x:1
 ```
+
+### 查看文件
+- cat：由第一行开始显示文件内容
+- tac：从最后一行开始显示
+- nl：显示的时候，输出行号
+- more：一页一页的显示文件内容
+- less：和more类似，但它可以往前翻页
+- head：只看头几行
+- tail：只看尾几行
