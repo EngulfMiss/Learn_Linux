@@ -77,3 +77,56 @@ r:4  w:2  x:1
 
 - head：只看头几行，通过-n参数控制显示多少行 例如：head -n 20
 - tail：只看尾几行，通过-n参数控制显示多少行 例如：tail -n 20
+
+### Linux链接的概念
+Linux的链接分为两种：硬链接和软链接  
+硬链接：A---B，假设B是A的硬链接，那么它们两个指向了同一个文件，允许一个文件拥有多个路径(在删除源文件的时候，系统则将链接数减1，当链接数为0的时候，inode就会被系统回收，文件的内容才会被删除。)  
+软链接：类似Windows下的快捷方式，删除源文件，快捷方式也访问不了  
+创建硬链接ln 谁 被谁链接   
+创建软连接ln -s 谁 被谁链接  
+创建文件 touch  
+输入字符串 echo  ,echo "内容" >> 文件名  
+```
+[root@iZ2zedwea74ejj95zb9sh0Z /]# cd home
+[root@iZ2zedwea74ejj95zb9sh0Z home]# clear
+[root@iZ2zedwea74ejj95zb9sh0Z home]# touch f1  # 创建一个文件f1
+[root@iZ2zedwea74ejj95zb9sh0Z home]# ls
+f1  mildlamb  myimage  tomcat
+[root@iZ2zedwea74ejj95zb9sh0Z home]# ln f1 f2  # 创建一个硬链接f2
+[root@iZ2zedwea74ejj95zb9sh0Z home]# ls
+f1  f2  mildlamb  myimage  tomcat
+[root@iZ2zedwea74ejj95zb9sh0Z home]# ln -s f1 f3  # 创建一个软链接f3
+[root@iZ2zedwea74ejj95zb9sh0Z home]# ls
+f1  f2  f3  mildlamb  myimage  tomcat
+[root@iZ2zedwea74ejj95zb9sh0Z home]# ll
+total 12
+-rw-r--r-- 2 root root    0 Aug 28 15:16 f1
+-rw-r--r-- 2 root root    0 Aug 28 15:16 f2
+lrwxrwxrwx 1 root root    2 Aug 28 15:17 f3 -> f1
+drwxr-xr-x 2 root root 4096 Aug 28 11:54 mildlamb
+drwxr-xr-x 2 root root 4096 Aug 28 11:29 myimage
+drwxr-xr-x 3 root root 4096 Aug 28 11:41 tomcat
+[root@iZ2zedwea74ejj95zb9sh0Z home]# echo "I love Kindred" >> f1  # 给f1文件中写入一些字符串
+[root@iZ2zedwea74ejj95zb9sh0Z home]# clear
+[root@iZ2zedwea74ejj95zb9sh0Z home]# ll
+total 20
+-rw-r--r-- 2 root root   15 Aug 28 15:17 f1
+-rw-r--r-- 2 root root   15 Aug 28 15:17 f2
+lrwxrwxrwx 1 root root    2 Aug 28 15:17 f3 -> f1
+drwxr-xr-x 2 root root 4096 Aug 28 11:54 mildlamb
+drwxr-xr-x 2 root root 4096 Aug 28 11:29 myimage
+drwxr-xr-x 3 root root 4096 Aug 28 11:41 tomcat
+[root@iZ2zedwea74ejj95zb9sh0Z home]# cat f1   # 查看各个文件内容
+I love Kindred
+[root@iZ2zedwea74ejj95zb9sh0Z home]# cat f2
+I love Kindred
+[root@iZ2zedwea74ejj95zb9sh0Z home]# cat f3
+I love Kindred
+[root@iZ2zedwea74ejj95zb9sh0Z home]# rm -rf f1   # 删除源文件f1
+[root@iZ2zedwea74ejj95zb9sh0Z home]# ls
+f2  f3  mildlamb  myimage  tomcat
+[root@iZ2zedwea74ejj95zb9sh0Z home]# cat f2     # 硬链接依旧可以查看
+I love Kindred
+[root@iZ2zedwea74ejj95zb9sh0Z home]# cat f3     # 软连接不能查看了
+cat: f3: No such file or directory
+```
